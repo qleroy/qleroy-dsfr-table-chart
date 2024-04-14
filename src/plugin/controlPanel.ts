@@ -17,7 +17,11 @@
  * under the License.
  */
 import { t, validateNonEmpty } from '@superset-ui/core';
-import { ControlPanelConfig, sharedControls } from '@superset-ui/chart-controls';
+import {
+  ControlPanelConfig,
+  sharedControls,
+  //Dataset,
+} from '@superset-ui/chart-controls';
 
 const config: ControlPanelConfig = {
   /**
@@ -118,6 +122,24 @@ const config: ControlPanelConfig = {
             config: sharedControls.row_limit,
           },
         ],
+        [
+          {
+            name: 'order_by_cols',
+            config: {
+              type: 'SelectControl',
+              label: t('Ordering'),
+              description: t('Order results by selected columns'),
+              multi: true,
+              default: [],
+              /*mapStateToProps: ({ datasource }) => ({
+                choices: datasource?.hasOwnProperty('order_by_choices')
+                  ? (datasource as Dataset)?.order_by_choices
+                  : datasource?.columns || [],
+              }),*/
+              resetOnHide: false,
+            },
+          },
+        ],
       ],
     },
     {
@@ -146,6 +168,18 @@ const config: ControlPanelConfig = {
               renderTrigger: true,
               default: true,
               description: t('Bordered table'),
+            },
+          },
+        ],
+        [
+          {
+            name: 'show_title',
+            config: {
+              type: 'CheckboxControl',
+              label: t('Show title'),
+              renderTrigger: true,
+              default: false,
+              description: t('Show title or not'),
             },
           },
         ],

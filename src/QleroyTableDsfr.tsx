@@ -44,7 +44,7 @@ const Styles = styled.div<QleroyTableDsfrStylesProps>`
 export default function QleroyTableDsfr(props: QleroyTableDsfrProps) {
   // height and width are the height and width of the DOM element as it exists in the dashboard.
   // There is also a `data` prop, which is, of course, your DATA 🎉
-  const { data, height, width, tableSummary, tableBordered } = props;
+  const { data, height, width, tableSummary, showTitle, tableBordered } = props;
   console.group("data");
   data.forEach(item => {
     for (let key in item) {
@@ -76,7 +76,9 @@ export default function QleroyTableDsfr(props: QleroyTableDsfrProps) {
     >
       <div className={tableClassname}>
         <table>
-          <caption>{tableSummary}</caption>
+          {showTitle &&
+            <caption>{tableSummary}</caption>
+          }
           <thead>
             <tr>
               {Object.keys(data[0]).map(col =>

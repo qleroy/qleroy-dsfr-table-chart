@@ -28,6 +28,7 @@ export interface QleroyTableDsfrStylesProps {
 interface QleroyTableDsfrCustomizeProps {
   headerText: string;
   tableSummary: string;
+  showTitle: boolean;
   tableBordered: boolean;
 }
 
